@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Student</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>Delete Student</h2>
+    {% if message %}
+        <p><strong>{{ message }}</strong></p>
+    {% endif %}
+    <form method="POST">
+        <label>Enter Student ID to Delete:</label>
+        <input type="text" name="student_id" required>
+        <button type="submit">Delete</button>
+    </form>
+    <br><a href="/">Back to Home</a>
+</body>
+</html>

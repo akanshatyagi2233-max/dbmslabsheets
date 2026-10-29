@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Filtered Records</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>Filter Options</h2>
+    
+    <form method="GET">
+        <label>Filter by Department:</label>
+        <input type="text" name="dept" placeholder="e.g., MCA">
+        <button type="submit">Filter Dept</button>
+    </form>
+
+    {% if dept_students %}
+    <h3>Department Filter Results:</h3>
+    <ul>
+        {% for s in dept_students %}
+            <li>{{ s.name }} - {{ s.department }} (Marks: {{ s.marks }})</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <hr>
+    <h3>Marks > 75</h3>
+    <ul>
+        {% for s in above_75 %}
+            <li>{{ s.name }} - {{ s.marks }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Marks Between 50 and 80</h3>
+    <ul>
+        {% for s in between_50_80 %}
+            <li>{{ s.name }} - {{ s.marks }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Age > 20</h3>
+    <ul>
+        {% for s in older_than_20 %}
+            <li>{{ s.name }} - Age: {{ s.age }}</li>
+        {% endfor %}
+    </ul>
+
+    <br><a href="/">Back to Home</a>
+</body>
+</html>
